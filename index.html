@@ -3,43 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CUSTELA SHOP | OFFICIAL VIP PLATFORM</title>
+    <title>CUSTELA SHOP | OFFICIAL VIP</title>
     <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root { --cyan: #00ffff; --dark: #000; --glass: rgba(255, 255, 255, 0.05); --border: rgba(0, 255, 255, 0.2); }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
         body { background: var(--dark); color: white; overflow-x: hidden; scroll-behavior: smooth; }
 
-        /* TELA DE LOGIN */
+        /* TELA DE LOGIN FIXADA */
         #trava { position: fixed; inset: 0; background: #000; z-index: 10000; display: flex; align-items: center; justify-content: center; }
-        .trava-card { background: var(--glass); backdrop-filter: blur(25px); padding: 50px; border-radius: 40px; border: 1px solid var(--border); text-align: center; width: 95%; max-width: 450px; }
-        .trava-card h1 { font-family: 'Syncopate', sans-serif; font-size: 1.4rem; letter-spacing: 6px; color: var(--cyan); margin-bottom: 25px; }
-        input { width: 100%; padding: 20px; background: rgba(0,0,0,0.5); border: 2px solid var(--cyan); border-radius: 15px; color: white; text-align: center; margin-bottom: 20px; outline: none; font-size: 1.2rem; }
-        .btn-trava { width: 100%; padding: 20px; background: var(--cyan); border: none; border-radius: 15px; font-weight: 900; cursor: pointer; color: #000; letter-spacing: 2px; }
+        .trava-card { background: var(--glass); backdrop-filter: blur(25px); padding: 50px; border-radius: 40px; border: 1px solid var(--border); text-align: center; width: 95%; max-width: 400px; }
+        .trava-card h1 { font-family: 'Syncopate', sans-serif; font-size: 1.2rem; letter-spacing: 5px; color: var(--cyan); margin-bottom: 30px; }
+        input { width: 100%; padding: 20px; background: rgba(0,0,0,0.8); border: 1px solid var(--cyan); border-radius: 15px; color: white; text-align: center; margin-bottom: 20px; outline: none; font-size: 1.2rem; }
+        .btn-trava { width: 100%; padding: 20px; background: var(--cyan); border: none; border-radius: 15px; font-weight: 900; cursor: pointer; color: #000; text-transform: uppercase; }
 
-        /* MENU LATERAL NEON */
-        .menu-btn { position: fixed; top: 25px; left: 25px; z-index: 3000; cursor: pointer; background: var(--dark); border: 2px solid var(--cyan); padding: 12px 20px; border-radius: 12px; font-weight: 900; color: var(--cyan); box-shadow: 0 0 20px rgba(0,255,255,0.4); font-size: 0.7rem; font-family: 'Syncopate'; }
-        .sidebar { position: fixed; left: -100%; top: 0; width: 300px; height: 100%; background: rgba(0,0,0,0.98); backdrop-filter: blur(20px); z-index: 2500; transition: 0.6s cubic-bezier(0.77,0,0.175,1); border-right: 1px solid var(--border); padding: 100px 30px; }
+        /* MENU LATERAL */
+        .menu-btn { position: fixed; top: 25px; left: 25px; z-index: 3000; cursor: pointer; background: #000; border: 2px solid var(--cyan); padding: 12px; border-radius: 12px; color: var(--cyan); font-family: 'Syncopate'; font-size: 0.6rem; }
+        .sidebar { position: fixed; left: -100%; top: 0; width: 280px; height: 100%; background: rgba(0,0,0,0.98); backdrop-filter: blur(20px); z-index: 2500; transition: 0.5s; border-right: 1px solid var(--border); padding: 100px 30px; }
         .sidebar.active { left: 0; }
-        .sidebar a { display: block; color: #fff; text-decoration: none; font-size: 0.8rem; margin-bottom: 30px; font-family: 'Syncopate'; letter-spacing: 3px; }
+        .sidebar a { display: block; color: white; text-decoration: none; font-size: 0.8rem; margin-bottom: 25px; font-family: 'Syncopate'; letter-spacing: 2px; }
 
-        /* CARRINHO STATUS */
-        .cart-status { position: fixed; top: 25px; right: 25px; border: 2px solid var(--cyan); color: #fff; padding: 12px 20px; border-radius: 15px; font-weight: 900; z-index: 2000; background: rgba(0,0,0,0.5); }
+        /* CARRINHO */
+        .cart-status { position: fixed; top: 25px; right: 25px; border: 2px solid var(--cyan); color: #fff; padding: 12px 20px; border-radius: 15px; font-weight: 900; z-index: 2000; background: rgba(0,0,0,0.6); }
 
-        /* GRID E PRODUTOS */
-        .container { max-width: 1400px; margin: 0 auto; padding: 100px 20px 180px; }
+        /* PRODUTOS */
+        .container { max-width: 1400px; margin: 0 auto; padding: 100px 20px 150px; }
         .section-title { font-family: 'Syncopate', sans-serif; font-size: 0.9rem; color: var(--cyan); margin: 60px 0 30px; letter-spacing: 5px; border-left: 5px solid var(--cyan); padding-left: 15px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 35px; }
-        .card { background: var(--glass); border: 1px solid var(--border); border-radius: 30px; padding: 25px; transition: 0.5s; position: relative; overflow: hidden; }
-        .card:hover { transform: translateY(-12px); border-color: var(--cyan); box-shadow: 0 20px 50px rgba(0,0,0,0.8); }
-        .card img { width: 100%; height: 280px; object-fit: cover; border-radius: 20px; margin-bottom: 20px; border: 1px solid #222; }
-        .badge-thc { position: absolute; top: 35px; right: 35px; background: rgba(0,0,0,0.8); color: var(--cyan); padding: 7px 15px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; border: 1px solid var(--cyan); }
-        .card p { color: #aaa; font-size: 0.85rem; line-height: 1.6; margin-bottom: 20px; min-height: 60px; }
-        .preco { font-size: 2.2rem; font-weight: 900; color: #fff; display: block; margin-bottom: 25px; }
-        .btn-add { width: 100%; background: var(--cyan); color: #000; padding: 20px; border: none; border-radius: 18px; font-weight: 900; cursor: pointer; transition: 0.3s; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .card { background: var(--glass); border: 1px solid var(--border); border-radius: 30px; padding: 20px; transition: 0.4s; position: relative; }
+        .card:hover { border-color: var(--cyan); transform: translateY(-10px); }
+        .card img { width: 100%; height: 280px; object-fit: cover; border-radius: 20px; margin-bottom: 15px; border: 1px solid #111; }
+        .badge { position: absolute; top: 30px; right: 30px; background: rgba(0,0,0,0.8); color: var(--cyan); padding: 6px 12px; border-radius: 50px; font-size: 0.7rem; font-weight: 800; border: 1px solid var(--cyan); }
+        .card h3 { font-family: 'Syncopate', sans-serif; font-size: 0.9rem; margin-bottom: 10px; color: #fff; }
+        .card p { color: #888; font-size: 0.8rem; margin-bottom: 15px; min-height: 40px; }
+        .preco { font-size: 2rem; font-weight: 900; color: #fff; display: block; margin-bottom: 20px; }
+        .btn-add { width: 100%; background: var(--cyan); color: #000; padding: 18px; border: none; border-radius: 15px; font-weight: 900; cursor: pointer; text-transform: uppercase; }
 
-        /* CHECKOUT */
-        .btn-checkout { position: fixed; bottom: 30px; right: 30px; left: 30px; background: #25d366; color: white; padding: 25px; border-radius: 30px; text-align: center; text-decoration: none; font-weight: 900; display: none; z-index: 4000; font-size: 1.3rem; }
+        /* WHATSAPP */
+        .btn-checkout { position: fixed; bottom: 30px; right: 30px; left: 30px; background: #25d366; color: white; padding: 25px; border-radius: 30px; text-align: center; text-decoration: none; font-weight: 900; display: none; z-index: 4000; font-size: 1.2rem; box-shadow: 0 10px 40px rgba(0,0,0,0.8); }
     </style>
 </head>
 <body>
@@ -47,8 +48,8 @@
     <div id="trava">
         <div class="trava-card">
             <h1>CUSTELA SHOP</h1>
-            <input type="password" id="pass" placeholder="SENHA 172830">
-            <button class="btn-trava" onclick="check()">ENTRAR</button>
+            <input type="password" id="pass" placeholder="DIGITE A SENHA VIP" autocomplete="off">
+            <button class="btn-trava" onclick="check()">ACESSAR</button>
         </div>
     </div>
 
@@ -56,111 +57,94 @@
     <div class="cart-status">🛒 <span id="cart-count">0</span></div>
 
     <div class="sidebar" id="sidebar">
-        <a href="#destaques" onclick="toggleMenu()">DESTAQUES</a>
-        <a href="#flores" onclick="toggleMenu()">FLORES PREMIUM</a>
-        <a href="#hax" onclick="toggleMenu()">HAXIXE / MELECA</a>
+        <a href="#prensados" onclick="toggleMenu()">PRENSADOS</a>
+        <a href="#flores" onclick="toggleMenu()">FLORES</a>
+        <a href="#haxixe" onclick="toggleMenu()">HAXIXE / MELECA</a>
         <a href="#party" onclick="toggleMenu()">PARTY TIME</a>
     </div>
 
     <div id="site" style="display:none;">
         <div class="container">
             
-            <h2 id="destaques" class="section-title">TOP SELECTION</h2>
+            <h2 id="prensados" class="section-title">PRENSADOS PREMIUM</h2>
             <div class="grid">
                 <div class="card">
-                    <span class="badge-thc">PUREZA 99%</span>
-                    <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=600&q=80">
-                    <h3>PEIXE EXPORT (1g)</h3>
-                    <p>Qualidade máxima de exportação. Brilho intenso e pureza absoluta.</p>
-                    <span class="preco">R$ 80,00</span>
-                    <button class="btn-add" onclick="addItem('Peixe Export', 80)">ADICIONAR</button>
+                    <span class="badge">10 GRAMAS</span>
+                    <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=600&q=80">
+                    <h3>PREN PREMIUM</h3>
+                    <p>Prensado classe A, verdinho e sem sementes. O melhor da região.</p>
+                    <span class="preco">R$ 50,00</span>
+                    <button class="btn-add" onclick="addItem('Pren Premium', 50)">ADICIONAR</button>
                 </div>
                 <div class="card">
-                    <span class="badge-thc">THC 12%</span>
+                    <span class="badge">THC 12%</span>
                     <img src="https://images.unsplash.com/photo-1603909223429-69bb7101f420?auto=format&fit=crop&w=600&q=80">
                     <h3>COLOMBIA GOLD (1g)</h3>
-                    <p>Sativa clássica. Efeito energético, flores densas e aroma cítrico.</p>
+                    <p>Flor importada com efeito forte e sabor cítrico inconfundível.</p>
                     <span class="preco">R$ 25,00</span>
                     <button class="btn-add" onclick="addItem('Colombia Gold', 25)">ADICIONAR</button>
                 </div>
-                <div class="card">
-                    <span class="badge-thc">10 GRAMAS</span>
-                    <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=600&q=80">
-                    <h3>PREN PREMIUM</h3>
-                    <p>O melhor da região. Prensado verde, limpo e sem sementes.</p>
-                    <span class="preco">R$ 50,00</span>
-                    <button class="btn-add" onclick="addItem('Pren Premium (10g)', 50)">ADICIONAR</button>
-                </div>
             </div>
 
-            <h2 id="flores" class="section-title">FLORES CALIFORNIA (FOTOS REAIS)</h2>
+            <h2 id="flores" class="section-title">FLORES CALIFÓRNIA (BUDS)</h2>
             <div class="grid">
                 <div class="card">
-                    <span class="badge-thc">THC 25%</span>
+                    <span class="badge">THC 25%</span>
                     <img src="https://images.unsplash.com/photo-1611083360739-bdad6e0eb1fa?auto=format&fit=crop&w=600&q=80">
                     <h3>GORILLA GLUE #4</h3>
-                    <p>Híbrida ultra potente. Bud resinado, efeito nocaute e sabor terroso.</p>
+                    <p>Buds resinados, efeito nocaute. Foto real do lote atual.</p>
                     <span class="preco">R$ 85,00</span>
                     <button class="btn-add" onclick="addItem('Gorilla Glue', 85)">ADICIONAR</button>
                 </div>
                 <div class="card">
-                    <span class="badge-thc">THC 22%</span>
+                    <span class="badge">THC 22%</span>
                     <img src="https://images.unsplash.com/photo-1596431940562-f79a296b7978?auto=format&fit=crop&w=600&q=80">
                     <h3>OG KUSH</h3>
-                    <p>Relaxamento profundo. Notas de pinho e limão. Flor de elite.</p>
+                    <p>O clássico. Relaxamento corporal intenso e aroma de pinho.</p>
                     <span class="preco">R$ 70,00</span>
                     <button class="btn-add" onclick="addItem('OG Kush', 70)">ADICIONAR</button>
                 </div>
-                <div class="card">
-                    <span class="badge-thc">THC 18%</span>
-                    <img src="https://images.unsplash.com/photo-1614727133102-496af4b0a46e?auto=format&fit=crop&w=600&q=80">
-                    <h3>LEMON HAZE</h3>
-                    <p>Aumento de foco e criatividade. Sativa cítrica e refrescante.</p>
-                    <span class="preco">R$ 60,00</span>
-                    <button class="btn-add" onclick="addItem('Lemon Haze', 60)">ADICIONAR</button>
-                </div>
             </div>
 
-            <h2 id="hax" class="section-title">HAXIXE & MELECA</h2>
+            <h2 id="haxixe" class="section-title">EXTRAÇÕES & MELECA</h2>
             <div class="grid">
                 <div class="card">
-                    <span class="badge-thc">DRY MAROC</span>
-                    <img src="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&w=600&q=80">
-                    <h3>DRY SIFT (1g)</h3>
-                    <p>Textura maleável e pureza no Dry Sift importado.</p>
-                    <span class="preco">R$ 55,00</span>
-                    <button class="btn-add" onclick="addItem('Dry Maroc', 55)">ADICIONAR</button>
+                    <span class="badge">PURO</span>
+                    <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=600&q=80">
+                    <h3>PEIXE EXPORT (1g)</h3>
+                    <p>Brilho escamoso, pureza total. Qualidade máxima garantida.</p>
+                    <span class="preco">R$ 80,00</span>
+                    <button class="btn-add" onclick="addItem('Peixe Export', 80)">ADICIONAR</button>
                 </div>
                 <div class="card">
-                    <span class="badge-thc">FULL MELT</span>
+                    <span class="badge">FULL MELT</span>
                     <img src="https://images.unsplash.com/photo-1533603095914-7221447a1955?auto=format&fit=crop&w=600&q=80">
                     <h3>LIVE ROSIN (1g)</h3>
-                    <p>Extração sem solvente. Pureza absoluta em cada grama.</p>
+                    <p>Extração sem solventes. Sabor e potência elevada.</p>
                     <span class="preco">R$ 180,00</span>
                     <button class="btn-add" onclick="addItem('Live Rosin', 180)">ADICIONAR</button>
                 </div>
             </div>
 
-            <h2 id="party" class="section-title">PARTY TIME (BALA / MD / PAPEL)</h2>
+            <h2 id="party" class="section-title">PARTY TIME</h2>
             <div class="grid">
                 <div class="card">
-                    <span class="badge-thc">CRISTAL</span>
+                    <span class="badge">98% PURE</span>
                     <img src="https://images.unsplash.com/photo-1563211232-c31327f2c68e?auto=format&fit=crop&w=600&q=80">
                     <h3>MDMA CHAMPAGNE</h3>
-                    <p>98% de pureza. Cristais limpos para um efeito intenso.</p>
+                    <p>Cristais puros. Efeito limpo e duradouro para sua festa.</p>
                     <span class="preco">R$ 120,00</span>
                     <button class="btn-add" onclick="addItem('MDMA Champagne', 120)">ADICIONAR</button>
                 </div>
                 <div class="card">
-                    <span class="badge-thc">280mg</span>
+                    <span class="badge">280mg</span>
                     <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=600&q=80">
                     <h3>BALA PUNISHER</h3>
-                    <p>Importada de alta dosagem. Prensa firme e brilhante.</p>
+                    <p>Prensa firme, alta dosagem. O melhor papel e bala da city.</p>
                     <span class="preco">R$ 45,00</span>
                     <button class="btn-add" onclick="addItem('Bala Punisher', 45)">ADICIONAR</button>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -172,7 +156,7 @@
             if(document.getElementById('pass').value === '172830') {
                 document.getElementById('trava').style.display = 'none';
                 document.getElementById('site').style.display = 'block';
-            } else { alert('ACESSO NEGADO'); }
+            } else { alert('SENHA INCORRETA'); }
         }
         function toggleMenu() { document.getElementById('sidebar').classList.toggle('active'); }
         function addItem(name, price) {
