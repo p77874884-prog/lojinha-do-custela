@@ -3,66 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lojinha do Custela | G-Digital</title>
+    <title>Lojinha do Custela | G-Digital VIP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --cyan: #00ffff; --dark: #0a0a0a; --gray: #1a1a1a; --red: #ff4d4d; }
-        body { margin: 0; font-family: sans-serif; background: var(--dark); color: white; padding-bottom: 100px; }
-        #trava { position: fixed; inset: 0; background: black; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        #trava h2 { color: var(--cyan); text-shadow: 0 0 15px var(--cyan); }
-        input { padding: 15px; background: var(--gray); border: 1px solid var(--cyan); color: white; border-radius: 8px; margin: 10px; text-align: center; }
-        button { padding: 15px 30px; background: var(--cyan); border: none; font-weight: bold; border-radius: 8px; cursor: pointer; }
-        #site { display: none; }
-        .header { text-align: center; padding: 30px 20px; border-bottom: 1px solid #333; }
-        .banner { width: 90%; max-width: 1000px; margin: 20px auto; display: block; border-radius: 15px; border: 1px solid #333; box-shadow: 0 0 20px rgba(0,255,255,0.1); }
-        .catalogo { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; padding: 20px; max-width: 1100px; margin: 0 auto; }
-        .card { background: var(--gray); border-radius: 12px; padding: 15px; border: 1px solid #333; text-align: center; transition: 0.3s; }
-        .card:hover { border-color: var(--cyan); transform: translateY(-5px); }
-        .card img { width: 100%; border-radius: 8px; height: 140px; object-fit: cover; margin-bottom: 10px; }
-        .card h3 { font-size: 1rem; margin: 5px 0; color: var(--cyan); }
-        .card .preco { font-weight: bold; color: #fff; margin-bottom: 15px; display: block; }
-        .btn-pedir { width: 100%; padding: 12px; background: transparent; border: 1px solid var(--cyan); color: var(--cyan); border-radius: 8px; font-weight: bold; cursor: pointer; }
-        .btn-pedir:hover { background: var(--cyan); color: black; }
-        .whatsapp-fixo { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; padding: 15px 20px; border-radius: 50px; text-decoration: none; font-weight: bold; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        :root { --cyan: #00ffff; --dark: #050505; --card: #121212; --accent: #0088ff; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background: var(--dark); color: white; overflow-x: hidden; }
+        
+        /* BLOQUEIO DE SEGURANÇA */
+        #trava {
+            position: fixed; inset: 0; background: radial-gradient(circle, #111 0%, #000 100%);
+            z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center;
+        }
+        .trava-box {
+            background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px);
+            padding: 40px; border-radius: 24px; border: 1px solid rgba(0, 255, 255, 0.2);
+            text-align: center; box-shadow: 0 0 50px rgba(0,0,0,1);
+        }
+        .trava-box h2 { color: var(--cyan); letter-spacing: 4px; margin-bottom: 10px; font-weight: 700; }
+        input { 
+            width: 100%; padding: 15px; background: rgba(255,255,255,0.05); border: 1px solid #333;
+            color: white; border-radius: 12px; margin: 20px 0; text-align: center; font-size: 1.1rem;
+            outline: none; transition: 0.3s;
+        }
+        input:focus { border-color: var(--cyan); box-shadow: 0 0 15px rgba(0, 255, 255, 0.3); }
+        .btn-entrar { 
+            width: 100%; padding: 15px; background: var(--cyan); color: #000; 
+            border: none; border-radius: 12px; font-weight: 700; cursor: pointer; transition: 0.3s;
+        }
+        .btn-entrar:hover { transform: scale(1.02); box-shadow: 0 0 20px var(--cyan); }
+
+        /* SITE CONTEÚDO */
+        #site { display: none; animation: fadeIn 0.8s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        header { padding: 40px 20px; text-align: center; }
+        header h1 { font-size: 2.2rem; font-weight: 700; background: linear-gradient(90deg, #fff, var(--cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        .banner-wrap { width: 90%; max-width: 1100px; margin: 0 auto 40px; }
+        .banner-img { width: 100%; border-radius: 20px; border: 1px solid #333; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+
+        .catalogo { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 25px; padding: 0 20px; max-width: 1100px; margin: 0 auto; 
+        }
+        .card { 
+            background: var(--card); border-radius: 20px; padding: 20px; 
+            border: 1px solid #222; transition: 0.4s ease; position: relative; overflow: hidden;
+        }
+        .card:hover { border-color: var(--cyan); transform: translateY(-10px); }
+        .card img { width: 100%; height: 200px; object-fit: cover; border-radius: 15px; margin-bottom: 15px; }
+        .card h3 { font-size: 1.2rem; margin-bottom: 8px; }
+        .card .price { color: var(--cyan); font-size: 1.4rem; font-weight: 700; margin-bottom: 20px; display: block; }
+        
+        .btn-buy { 
+            width: 100%; padding: 12px; background: transparent; border: 2px solid var(--cyan);
+            color: var(--cyan); border-radius: 12px; font-weight: 700; cursor: pointer; transition: 0.3s;
+        }
+        .btn-buy:hover { background: var(--cyan); color: #000; }
+
+        .whatsapp-float {
+            position: fixed; bottom: 30px; right: 30px; background: #25d366; 
+            width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3); animation: pulse 2s infinite; z-index: 100;
+        }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
     </style>
 </head>
 <body>
+
     <div id="trava">
-        <h2>G-DIGITAL SOLUTIONS</h2>
-        <p>Acesso Restrito: Lojinha do Custela</p>
-        <input type="password" id="senha" placeholder="Senha">
-        <button onclick="liberar()">ENTRAR</button>
+        <div class="trava-box">
+            <h2>G-DIGITAL</h2>
+            <p style="color: #666;">Acesso Exclusivo à Lojinha do Custela</p>
+            <input type="password" id="pass" placeholder="Password">
+            <button class="btn-entrar" onclick="check()">DESBLOQUEAR ACESSO</button>
+        </div>
     </div>
+
     <div id="site">
-        <div class="header"><h1>LOJINHA DO CUSTELA</h1><p style="color:var(--cyan)">Premium Quality - California Style</p></div>
-        <img src="banner.jpg" class="banner" onerror="this.src='https://via.placeholder.com/1000x400/111/00ffff?text=BANNER+MOTO+AQUI'">
+        <header>
+            <h1>LOJINHA DO CUSTELA</h1>
+            <p style="color: #666; font-size: 0.9rem; margin-top: 5px;">A MELHOR QUALIDADE DO MERCADO</p>
+        </header>
+
+        <div class="banner-wrap">
+            <img src="banner.jpg" class="banner-img" onerror="this.src='https://images.unsplash.com/photo-1558981403-c5f97dbbe480?auto=format&fit=crop&w=1100&q=80'">
+        </div>
+
         <div class="catalogo">
             <div class="card">
-                <img src="https://via.placeholder.com/200/222/00ffff?text=PREN">
-                <h3>PREN (10g)</h3>
-                <span class="preco">R$ 150,00</span>
-                <button class="btn-pedir" onclick="pedir('Pren 10g')">PEDIR AGORA</button>
+                <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=400&q=80">
+                <h3>PREN PREMIUM</h3>
+                <span style="color: #666; font-size: 0.8rem; display: block; margin-bottom: 5px;">Pacote de 10g</span>
+                <span class="price">R$ 150,00</span>
+                <button class="btn-buy" onclick="order('Pren Premium')">SOLICITAR NO WHATSAPP</button>
             </div>
+
             <div class="card">
-                <img src="https://via.placeholder.com/200/222/00ffff?text=COLOMBIA">
-                <h3>COLÔMBIA (1g)</h3>
-                <span class="preco">R$ 25,00</span>
-                <button class="btn-pedir" onclick="pedir('Colombia 1g')">PEDIR AGORA</button>
+                <img src="https://images.unsplash.com/photo-1603909223429-69bb7101f420?auto=format&fit=crop&w=400&q=80">
+                <h3>COLÔMBIA GOLD</h3>
+                <span style="color: #666; font-size: 0.8rem; display: block; margin-bottom: 5px;">Porção de 1g</span>
+                <span class="price">R$ 25,00</span>
+                <button class="btn-buy" onclick="order('Colombia Gold')">SOLICITAR NO WHATSAPP</button>
             </div>
+
             <div class="card">
-                <img src="https://via.placeholder.com/200/222/00ffff?text=PEIXE">
-                <h3>PEIXE EXPORT (1g)</h3>
-                <span class="preco">R$ 80,00</span>
-                <button class="btn-pedir" onclick="pedir('Peixe Exportacao 1g')">PEDIR AGORA</button>
+                <img src="https://images.unsplash.com/photo-1614727133102-496af4b0a46e?auto=format&fit=crop&w=400&q=80">
+                <h3>PEIXE EXPORT</h3>
+                <span style="color: #666; font-size: 0.8rem; display: block; margin-bottom: 5px;">Pureza de 1g</span>
+                <span class="price">R$ 80,00</span>
+                <button class="btn-buy" onclick="order('Peixe Export')">SOLICITAR NO WHATSAPP</button>
             </div>
         </div>
-        <a href="https://wa.me/SEU_NUMERO_AQUI" class="whatsapp-fixo" target="_blank">Suporte WhatsApp</a>
     </div>
+
+    <a href="https://wa.me/5500000000000" class="whatsapp-float" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" width="30" style="filter: invert(1);">
+    </a>
+
     <script>
-        function liberar(){ if(document.getElementById('senha').value==='12345'){document.getElementById('trava').style.display='none';document.getElementById('site').style.display='block';}else{alert('Senha incorreta!');}}
-        function pedir(p){ 
-            const tel = "SEU_NUMERO_AQUI"; 
-            const msg = window.encodeURIComponent(`Salve Custela! Vim pelo site, quero o item: ${p}`);
-            window.open(`https://wa.me/${tel}?text=${msg}`, '_blank'); 
+        function check() {
+            if(document.getElementById('pass').value === '12345') {
+                document.getElementById('trava').style.display = 'none';
+                document.getElementById('site').style.display = 'block';
+            } else { alert('Acesso Negado!'); }
+        }
+        function order(item) {
+            const msg = window.encodeURIComponent(`Salve! Gostaria de encomendar: ${item}`);
+            window.open(`https://wa.me/5500000000000?text=${msg}`, '_blank');
         }
     </script>
 </body>
