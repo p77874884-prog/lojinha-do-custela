@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custela VIP | G-Digital Solutions</title>
+    <title>Custela VIP | G-Digital Platform</title>
     <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root { --cyan: #00ffff; --dark: #000; --glass: rgba(255, 255, 255, 0.05); --border: rgba(0, 255, 255, 0.2); }
@@ -17,71 +17,59 @@
         input { width: 100%; padding: 15px; background: rgba(255,255,255,0.05); border: 1px solid #222; border-radius: 10px; color: white; text-align: center; margin-bottom: 20px; outline: none; }
         .btn-trava { width: 100%; padding: 15px; background: var(--cyan); border: none; border-radius: 10px; font-weight: bold; cursor: pointer; }
 
-        /* MENU HAMBURGUER NEON */
-        .menu-toggle {
-            position: fixed; top: 25px; left: 25px; z-index: 2000;
-            cursor: pointer; background: var(--dark); border: 1px solid var(--cyan);
-            width: 50px; height: 50px; border-radius: 12px;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
-        }
+        /* NAV & SIDEBAR */
+        .menu-toggle { position: fixed; top: 25px; left: 25px; z-index: 2000; cursor: pointer; background: var(--dark); border: 1px solid var(--cyan); width: 50px; height: 50px; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 0 15px rgba(0, 255, 255, 0.3); }
         .menu-toggle span { width: 25px; height: 2px; background: var(--cyan); margin: 3px; transition: 0.3s; }
-
-        /* SIDEBAR DE MILHÕES */
-        .sidebar {
-            position: fixed; left: -100%; top: 0; width: 300px; height: 100%;
-            background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(25px);
-            z-index: 1500; transition: 0.6s cubic-bezier(0.77,0,0.175,1);
-            border-right: 1px solid var(--border); padding: 100px 40px;
-        }
+        .sidebar { position: fixed; left: -100%; top: 0; width: 300px; height: 100%; background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(25px); z-index: 1500; transition: 0.6s cubic-bezier(0.77,0,0.175,1); border-right: 1px solid var(--border); padding: 100px 40px; }
         .sidebar.active { left: 0; }
-        .sidebar h3 { font-family: 'Syncopate', sans-serif; font-size: 0.9rem; color: var(--cyan); margin-bottom: 50px; letter-spacing: 3px; }
-        .sidebar a { display: block; color: white; text-decoration: none; font-size: 1.2rem; font-weight: 300; margin-bottom: 30px; transition: 0.3s; }
-        .sidebar a:hover { color: var(--cyan); transform: translateX(10px); }
+        .sidebar a { display: block; color: white; text-decoration: none; font-size: 1.2rem; margin-bottom: 30px; transition: 0.3s; font-weight: 300; }
+        .sidebar a:hover { color: var(--cyan); padding-left: 10px; }
 
-        /* CONTEÚDO */
+        /* CART FLOATING */
+        .cart-status { position: fixed; top: 25px; right: 25px; background: var(--glass); border: 1px solid var(--cyan); padding: 12px 20px; border-radius: 12px; backdrop-filter: blur(10px); z-index: 1000; font-weight: bold; }
+
+        /* CONTENT */
         #site { display: none; }
-        header { height: 70vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; border-bottom: 1px solid var(--border); }
-        header h1 { font-family: 'Syncopate', sans-serif; font-size: 3.5rem; text-shadow: 0 0 20px rgba(0,255,255,0.5); }
-        
+        header { height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; border-bottom: 1px solid var(--border); }
+        header h1 { font-family: 'Syncopate', sans-serif; font-size: 3.5rem; }
+
         .catalogo { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 50px 20px; max-width: 1200px; margin: 0 auto; }
         .card { background: var(--glass); border: 1px solid var(--border); border-radius: 25px; padding: 20px; transition: 0.4s; }
-        .card:hover { transform: scale(1.03); background: rgba(255,255,255,0.08); }
-        .card img { width: 100%; height: 280px; object-fit: cover; border-radius: 20px; margin-bottom: 15px; }
-        .card h3 { font-family: 'Syncopate', sans-serif; font-size: 1rem; margin-bottom: 10px; color: var(--cyan); }
-        .preco { font-size: 1.8rem; font-weight: 700; display: block; margin-bottom: 20px; }
-        .btn-buy { width: 100%; padding: 15px; background: var(--cyan); color: black; border: none; border-radius: 15px; font-weight: bold; cursor: pointer; }
+        .card:hover { transform: translateY(-10px); border-color: var(--cyan); }
+        .card img { width: 100%; height: 250px; object-fit: cover; border-radius: 20px; margin-bottom: 15px; }
+        .card h3 { font-family: 'Syncopate', sans-serif; color: var(--cyan); font-size: 0.9rem; margin-bottom: 10px; }
+        .preco { font-size: 1.5rem; font-weight: bold; margin-bottom: 20px; display: block; }
+        
+        .btn-add { width: 100%; padding: 15px; background: transparent; border: 1px solid var(--cyan); color: var(--cyan); border-radius: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .btn-add:hover { background: var(--cyan); color: black; }
 
-        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2000; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+        .btn-checkout { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 400px; background: #25d366; color: white; padding: 20px; border-radius: 15px; text-align: center; text-decoration: none; font-weight: bold; box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 2000; display: none; }
     </style>
 </head>
 <body>
 
     <div id="trava">
         <div class="trava-card">
-            <h2>G-DIGITAL</h2>
-            <input type="password" id="pass" placeholder="ACCESS CODE">
-            <button class="btn-trava" onclick="check()">ENTRAR NO SISTEMA</button>
+            <h2>PRIVATE ACCESS</h2>
+            <input type="password" id="pass" placeholder="PASSWORD">
+            <button class="btn-trava" onclick="check()">ENTRAR</button>
         </div>
     </div>
 
-    <div class="menu-toggle" onclick="toggleMenu()">
-        <span></span><span></span><span></span>
-    </div>
+    <div class="menu-toggle" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+    <div class="cart-status">CARRINHO: <span id="cart-count">0</span></div>
 
     <div class="sidebar" id="sidebar">
-        <h3>NAVEGAÇÃO</h3>
+        <h3>G-DIGITAL LUXE</h3>
         <a href="#" onclick="toggleMenu()">INÍCIO</a>
-        <a href="#catalogo" onclick="toggleMenu()">PRODUTOS</a>
-        <a href="#" onclick="toggleMenu()">CONTATO VIP</a>
-        <a href="#" style="font-size: 0.7rem; color: #555; margin-top: 100px;">G-DIGITAL SOLUTIONS ©</a>
+        <a href="#catalogo" onclick="toggleMenu()">MENU COMPLETO</a>
+        <a href="#" onclick="clearCart()">LIMPAR PEDIDO</a>
     </div>
 
     <div id="site">
         <header>
-            <p style="letter-spacing: 5px; color: #555; margin-bottom: 10px;">WELCOME TO</p>
             <h1>CUSTELA</h1>
-            <p style="color: var(--cyan); font-weight: bold; margin-top: 15px;">PREMIUM DELIVERY SERVICE</p>
+            <p style="color: var(--cyan); letter-spacing: 5px;">THE PLATINUM EXPERIENCE</p>
         </header>
 
         <div id="catalogo" class="catalogo">
@@ -89,39 +77,61 @@
                 <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=400&q=80">
                 <h3>PREN PREMIUM (10g)</h3>
                 <span class="preco">R$ 150,00</span>
-                <button class="btn-buy" onclick="buy('Pren')">PEDIR AGORA</button>
+                <button class="btn-add" onclick="addToCart('Pren Premium', 150)">ADICIONAR</button>
             </div>
             <div class="card">
                 <img src="https://images.unsplash.com/photo-1603909223429-69bb7101f420?auto=format&fit=crop&w=400&q=80">
                 <h3>COLOMBIA GOLD (1g)</h3>
                 <span class="preco">R$ 25,00</span>
-                <button class="btn-buy" onclick="buy('Colombia')">PEDIR AGORA</button>
+                <button class="btn-add" onclick="addToCart('Colombia Gold', 25)">ADICIONAR</button>
             </div>
             <div class="card">
                 <img src="https://images.unsplash.com/photo-1614727133102-496af4b0a46e?auto=format&fit=crop&w=400&q=80">
                 <h3>PEIXE EXPORT (1g)</h3>
                 <span class="preco">R$ 80,00</span>
-                <button class="btn-buy" onclick="buy('Peixe')">PEDIR AGORA</button>
+                <button class="btn-add" onclick="addToCart('Peixe Export', 80)">ADICIONAR</button>
             </div>
         </div>
     </div>
 
-    <a href="https://wa.me/5500000000000" class="whatsapp-float" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" width="30" style="filter: invert(1);">
-    </a>
+    <a href="#" id="checkout" class="btn-checkout" onclick="sendOrder()">FINALIZAR PEDIDO NO WHATS</a>
 
     <script>
+        let cart = [];
+        let total = 0;
+
         function check() {
             if(document.getElementById('pass').value === '12345') {
                 document.getElementById('trava').style.display = 'none';
                 document.getElementById('site').style.display = 'block';
             } else { alert('ACESSO NEGADO'); }
         }
-        function toggleMenu() {
-            document.getElementById('sidebar').classList.toggle('active');
+
+        function toggleMenu() { document.getElementById('sidebar').classList.toggle('active'); }
+
+        function addToCart(name, price) {
+            cart.push({name, price});
+            total += price;
+            updateCart();
         }
-        function buy(item) {
-            window.open(`https://wa.me/5500000000000?text=Olá+Custela!+Quero+o+item:+${item}`, '_blank');
+
+        function updateCart() {
+            document.getElementById('cart-count').innerText = cart.length;
+            const btn = document.getElementById('checkout');
+            if(cart.length > 0) { btn.style.display = 'block'; }
+            btn.innerText = `FINALIZAR R$ ${total.toFixed(2)} NO WHATSAPP`;
+        }
+
+        function clearCart() {
+            cart = []; total = 0; updateCart();
+            document.getElementById('checkout').style.display = 'none';
+            toggleMenu();
+        }
+
+        function sendOrder() {
+            let items = cart.map(i => i.name).join(', ');
+            const msg = window.encodeURIComponent(`Salve Custela! Quero fechar esse pedido:\n\nItens: ${items}\nTotal: R$ ${total.toFixed(2)}`);
+            window.open(`https://wa.me/5500000000000?text=${msg}`, '_blank');
         }
     </script>
 </body>
