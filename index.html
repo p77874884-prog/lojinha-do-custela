@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lojinha do Custela | G-Digital</title>
+    <style>
+        :root { --cyan: #00ffff; --dark: #0a0a0a; --gray: #1a1a1a; }
+        body { margin: 0; font-family: sans-serif; background: var(--dark); color: white; }
+        #trava { position: fixed; inset: 0; background: black; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        #trava h2 { color: var(--cyan); text-shadow: 0 0 15px var(--cyan); }
+        input { padding: 15px; background: var(--gray); border: 1px solid var(--cyan); color: white; border-radius: 8px; margin: 10px; text-align: center; }
+        button { padding: 15px 30px; background: var(--cyan); border: none; font-weight: bold; border-radius: 8px; cursor: pointer; }
+        #site { display: none; padding-bottom: 80px; }
+        .header { text-align: center; padding: 40px 20px; }
+        .banner { width: 90%; max-width: 1000px; margin: 0 auto; display: block; border-radius: 15px; border: 1px solid #333; }
+        .catalogo { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; padding: 20px; max-width: 1100px; margin: 0 auto; }
+        .card { background: var(--gray); border-radius: 12px; padding: 10px; border: 1px solid #333; transition: 0.3s; text-align: center; }
+        .card img { width: 100%; border-radius: 8px; height: 150px; object-fit: cover; }
+        .btn-pedir { width: 100%; padding: 10px; background: transparent; border: 1px solid var(--cyan); color: var(--cyan); border-radius: 6px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <div id="trava">
+        <h2>G-DIGITAL SOLUTIONS</h2>
+        <p>Acesso Restrito: Lojinha do Custela</p>
+        <input type="password" id="senha" placeholder="Senha">
+        <button onclick="liberar()">ENTRAR</button>
+    </div>
+    <div id="site">
+        <div class="header"><h1>LOJINHA DO CUSTELA</h1><p style="color:var(--cyan)">Premium Quality Delivery</p></div>
+        <img src="banner.jpg" class="banner" onerror="this.src='https://via.placeholder.com/1000x400/111/00ffff?text=BANNER+AQUI'">
+        <div class="catalogo">
+            <div class="card"><img src="https://via.placeholder.com/200/222/00ffff?text=FLOR"><button class="btn-pedir" onclick="pedir('Flor Premium')">PEDIR FLOR</button></div>
+            <div class="card"><img src="https://via.placeholder.com/200/222/00ffff?text=GUMMY"><button class="btn-pedir" onclick="pedir('Edíveis')">PEDIR EDÍVEL</button></div>
+        </div>
+    </div>
+    <script>
+        function liberar(){ if(document.getElementById('senha').value==='12345'){document.getElementById('trava').style.display='none';document.getElementById('site').style.display='block';}else{alert('Erro!');}}
+        function pedir(p){ window.open(`https://wa.me/5500000000000?text=Quero+pedir+${p}`, '_blank'); }
+    </script>
+</body>
+</html>
